@@ -1,0 +1,5 @@
+# Warnings for .travis.yml:
+# [x] unexpected key fake, dropping
+sudo: true
+language: ruby
+fake: key

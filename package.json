@@ -1,0 +1,52 @@
+{
+  "name": "linter-travis-lint",
+  "main": "./lib/main.js",
+  "version": "1.0.0",
+  "description": "TravisCI lint via lint",
+  "repository": "https://github.com/mschuchard/linter-travis-lint",
+  "license": "MIT",
+  "keywords": [
+    "lint",
+    "linter",
+    "travis",
+    "travisci"
+  ],
+  "bugs": {
+    "url": "https://github.com/mschuchard/linter-travis-lint/issues"
+  },
+  "engines": {
+    "atom": ">0.95.0"
+  },
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "2.0.0": "provideLinter"
+      }
+    }
+  },
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "atom-linter": "^5.0.2"
+  },
+  "devDependencies": {
+    "eslint": "latest",
+    "babel-eslint": "latest"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "rules": {
+      "strict": 0
+    },
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true
+    },
+    "ecmaFeatures": {
+      "modules": true
+    },
+    "globals": {
+      "atom": true
+    }
+  }
+}

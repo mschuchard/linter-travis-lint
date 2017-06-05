@@ -1,0 +1,29 @@
+# setup environment
+sudo: false
+language: ruby
+cache: bundler
+
+notifications:
+  email: false
+
+git:
+  depth: 5
+
+# setup tests
+env:
+  global:
+    - APM_TEST_PACKAGES="language-yaml"
+    - ATOM_LINT_WITH_BUNDLED_NODE="true"
+
+matrix:
+  include:
+  - os: linux
+    rvm: 2.2
+  - os: linux
+    rvm: 2.2
+    env: ATOM_CHANNEL=beta
+
+# execute tests
+install: gem install --no-document travis
+before_script: travis --version
+script: 'curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh | sh'
