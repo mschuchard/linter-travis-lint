@@ -18,12 +18,12 @@ env:
 matrix:
   include:
   - os: linux
-    rvm: 2.2
+    rvm: 2.2.7
   - os: linux
-    rvm: 2.2
+    rvm: 2.2.7
     env: ATOM_CHANNEL=beta
 
 # execute tests
 install: gem install --no-document travis
-before_script: travis --version
+before_script: echo "y" | travis --version
 script: 'curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh | sh'
