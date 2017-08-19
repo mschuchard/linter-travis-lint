@@ -15,9 +15,9 @@ describe('The Travis Lint provider for Linter', () => {
     });
   });
 
-  describe('checks a file with a syntax issue', () => {
+  describe('checks a file with a travis syntax issue', () => {
     let editor = null;
-    const badFile = path.join(__dirname, 'fixtures/clean', '.travis.yml');
+    const badFile = path.join(__dirname, 'fixtures/travis_syntax', '.travis.yml');
     beforeEach(() => {
       waitsForPromise(() =>
         atom.workspace.open(badFile).then(openEditor => {
@@ -37,24 +37,22 @@ describe('The Travis Lint provider for Linter', () => {
     it('verifies the first message', () => {
       waitsForPromise(() => {
         return lint(editor).then(messages => {
-          expect(messages[0].type).toBeDefined();
-          expect(messages[0].type).toEqual('Error');
-          expect(messages[0].text).toBeDefined();
-          expect(messages[0].text).toEqual("expected: IDENT | STRING | ASSIGN | LBRACE got: SUB");
-          expect(messages[0].filePath).toBeDefined();
-          expect(messages[0].filePath).toMatch(/.+test\.tf$/);
-          expect(messages[0].range).toBeDefined();
-          expect(messages[0].range.length).toBeDefined();
-          expect(messages[0].range.length).toEqual(2);
-          expect(messages[0].range).toEqual([[3, 3], [3, 4]]);
+          expect(messages[0].severity).toBeDefined();
+          expect(messages[0].severity).toEqual('error');
+          expect(messages[0].excerpt).toBeDefined();
+          expect(messages[0].excerpt).toEqual('unexpected key fake, dropping');
+          expect(messages[0].location.file).toBeDefined();
+          expect(messages[0].location.file).toMatch(/.+travis_syntax\/\.travis\.yml$/);
+          expect(messages[0].location.position).toBeDefined();
+          expect(messages[0].location.position).toEqual([[0, 0], [0, 1]]);
         });
       });
     });
   });
 
-  describe('checks a file with a syntax issue in the directory', () => {
+  describe('checks a file with a yaml syntax issue', () => {
     let editor = null;
-    const badFile = path.join(__dirname, 'fixtures/clean', '.travis.yml');
+    const badFile = path.join(__dirname, 'fixtures/yaml_syntax', '.travis.yml');
     beforeEach(() => {
       waitsForPromise(() =>
         atom.workspace.open(badFile).then(openEditor => {
@@ -74,47 +72,14 @@ describe('The Travis Lint provider for Linter', () => {
     it('verifies the first message', () => {
       waitsForPromise(() => {
         return lint(editor).then(messages => {
-          expect(messages[0].type).toBeDefined();
-          expect(messages[0].type).toEqual('Error');
-          expect(messages[0].text).toBeDefined();
-          expect(messages[0].text).toEqual("expected: IDENT | STRING | ASSIGN | LBRACE got: SUB");
-          expect(messages[0].filePath).toBeDefined();
-          expect(messages[0].filePath).toMatch(/.+test\.tf$/);
-          expect(messages[0].range).toBeDefined();
-          expect(messages[0].range.length).toBeDefined();
-          expect(messages[0].range.length).toEqual(2);
-          expect(messages[0].range).toEqual([[3, 3], [3, 4]]);
-        });
-      });
-    });
-  });
-
-  describe('checks a file with a lint issue in the directory', () => {
-    let editor = null;
-    const badFile = path.join(__dirname, 'fixtures/clean', '.travis.yml');
-    beforeEach(() => {
-      waitsForPromise(() =>
-        atom.workspace.open(badFile).then(openEditor => {
-          editor = openEditor;
-        })
-      );
-    });
-
-    it('finds the first message', () => {
-      waitsForPromise(() =>
-        lint(editor).then(messages => {
-          expect(messages.length).toEqual(1);
-        })
-      );
-    });
-
-    it('verifies the first message', () => {
-      waitsForPromise(() => {
-        return lint(editor).then(messages => {
-          expect(messages[0].type).toBeDefined();
-          expect(messages[0].type).toEqual('Error');
-          expect(messages[0].text).toBeDefined();
-          expect(messages[0].text).toEqual("Non-syntax error in directory: resource 'digitalocean_domain.domain' config: unknown resource 'digitalocean_droplet.droplet' referenced in variable digitalocean_droplet.droplet.ipv4_address.");
+          expect(messages[0].severity).toBeDefined();
+          expect(messages[0].severity).toEqual('error');
+          expect(messages[0].excerpt).toBeDefined();
+          expect(messages[0].excerpt).toEqual("syntax error: (<unknown>): could not find expected ':' while scanning a simple key");
+          expect(messages[0].location.file).toBeDefined();
+          expect(messages[0].location.file).toMatch(/.+yaml_syntax\/\.travis\.yml$/);
+          expect(messages[0].location.position).toBeDefined();
+          expect(messages[0].location.position).toEqual([[1, 0], [1, 1]]);
         });
       });
     });
