@@ -85,6 +85,16 @@ describe('The Travis Lint provider for Linter', () => {
     });
   });
 
+  it('ignores a non-Travis yaml file', (done) => {
+    const goodFile = path.join(__dirname, 'fixtures', 'not_travis.yml');
+    return atom.workspace.open(goodFile).then(editor =>
+      lint(editor).then(messages => {
+      }, (reason) => {
+        done();
+      })
+    );
+  });
+
   it('finds nothing wrong with a valid file', () => {
     waitsForPromise(() => {
       const goodFile = path.join(__dirname, 'fixtures/clean', '.travis.yml');
