@@ -1,5 +1,5 @@
 ### Next (Roadmap)
-
+- Updated `atom-linter` dependency.
 
 ### 1.0.1
 - Added config options for API endpoint and access token.
