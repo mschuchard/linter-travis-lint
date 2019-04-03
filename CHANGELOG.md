@@ -1,4 +1,4 @@
-### Next (Roadmap)
+### 1.0.2
 - Updated `atom-linter` dependency.
 - Lint on `stdin` to include situations where file does not exist.
 
