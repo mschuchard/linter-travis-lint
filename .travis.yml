@@ -1,8 +1,11 @@
 # setup environment
-dist: xenial
-sudo: false
+dist: bionic
 language: ruby
 cache: bundler
+
+branches:
+  only:
+  - master
 
 notifications:
   email: false
@@ -19,9 +22,9 @@ env:
 matrix:
   include:
   - os: linux
-    rvm: 2.3
+    rvm: 2.5
   - os: linux
-    rvm: 2.3
+    rvm: 2.5
     env: ATOM_CHANNEL=beta
 
 # execute tests
