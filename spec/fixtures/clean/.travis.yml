@@ -1,3 +1,2 @@
 # clean travisci config
-sudo: true
 language: ruby

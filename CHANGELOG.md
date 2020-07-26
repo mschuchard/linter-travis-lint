@@ -1,3 +1,7 @@
+### Next (Roadmap)
+- try position information helper using json style output
+- severity info and other helpful stuff in output now
+
 ### 1.0.2
 - Updated `atom-linter` dependency.
 - Lint on `stdin` to include situations where file does not exist.
