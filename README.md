@@ -1,7 +1,7 @@
 ![Preview](https://raw.githubusercontent.com/mschuchard/linter-travis-lint/master/linter_travis_lint.png)
 
 ### Linter-Travis-Lint
-[![Build Status](https://travis-ci.org/mschuchard/linter-travis-lint.svg?branch=master)](https://travis-ci.org/mschuchard/linter-travis-lint)
+[![Build Status](https://travis-ci.com/mschuchard/linter-travis-lint.svg?branch=master)](https://travis-ci.com/mschuchard/linter-travis-lint)
 
 `Linter-Travis-Lint` aims to provide functional and robust `travis lint` linting functionality within Atom.
 

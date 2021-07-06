@@ -1,3 +1,6 @@
+### Next (Roadmap)
+- try position information helper using json style output
+
 ### 1.0.3
 - Display severity info for Travis issues.
 - Fix yaml error output capturing.
