@@ -1,4 +1,6 @@
 ### Next (Roadmap)
+- Updates to Linter API usage.
+
 - try position information helper using json style output
 
 ### 1.0.3
