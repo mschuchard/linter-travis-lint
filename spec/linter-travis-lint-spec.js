@@ -26,29 +26,29 @@ describe('The Travis Lint provider for Linter', () => {
       );
     });
 
-    it('finds the first message', () => {
+    it('finds the messages', () => {
       waitsForPromise(() =>
         lint(editor).then(messages => {
-          expect(messages.length).toEqual(1);
+          expect(messages.length).toEqual(2);
         })
       );
     });
 
-    it('verifies the first message', () => {
+    it('verifies the messages', () => {
       waitsForPromise(() => {
         return lint(editor).then(messages => {
           expect(messages[0].severity).toBeDefined();
-          expect(messages[0].severity).toEqual('error');
+          expect(messages[0].severity).toEqual('warning');
           expect(messages[0].excerpt).toBeDefined();
-          expect(messages[0].excerpt).toEqual('[warn] on root: unknown key fake (key)');
+          expect(messages[0].excerpt).toEqual('on root: unknown key fake (key)');
           expect(messages[0].location.file).toBeDefined();
           expect(messages[0].location.file).toMatch(/.+travis_syntax\/\.travis\.yml$/);
           expect(messages[0].location.position).toBeDefined();
           expect(messages[0].location.position).toEqual([[0, 0], [0, 1]]);
           expect(messages[1].severity).toBeDefined();
-          expect(messages[1].severity).toEqual('error');
+          expect(messages[1].severity).toEqual('warning');
           expect(messages[1].excerpt).toBeDefined();
-          expect(messages[1].excerpt).toEqual('[warn] on root: deprecated key: sudo (The key `sudo` has no effect anymore.)');
+          expect(messages[1].excerpt).toEqual('on root: deprecated key: sudo (The key `sudo` has no effect anymore.)');
           expect(messages[1].location.file).toBeDefined();
           expect(messages[1].location.file).toMatch(/.+travis_syntax\/\.travis\.yml$/);
           expect(messages[1].location.position).toBeDefined();
@@ -83,7 +83,7 @@ describe('The Travis Lint provider for Linter', () => {
           expect(messages[0].severity).toBeDefined();
           expect(messages[0].severity).toEqual('error');
           expect(messages[0].excerpt).toBeDefined();
-          expect(messages[0].excerpt).toEqual("syntax error: (<unknown>): could not find expected ':' while scanning a simple key");
+          expect(messages[0].excerpt).toEqual("(<unknown>): could not find expected ':' while scanning a simple key");
           expect(messages[0].location.file).toBeDefined();
           expect(messages[0].location.file).toMatch(/.+yaml_syntax\/\.travis\.yml$/);
           expect(messages[0].location.position).toBeDefined();
