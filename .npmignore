@@ -4,3 +4,5 @@ spec
 linter_travis_lint.png
 .git
 .travis.yml
+.circleci
+.github

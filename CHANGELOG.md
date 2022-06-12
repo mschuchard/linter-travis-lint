@@ -1,7 +1,5 @@
-### Next (Roadmap)
+### 1.0.4
 - Updates to Linter API usage.
-
-- try position information helper using json style output
 
 ### 1.0.3
 - Display severity info for Travis issues.
