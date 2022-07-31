@@ -15,7 +15,7 @@ describe('The Travis Lint provider for Linter', () => {
     });
   });
 
-  describe('checks a file with a travis syntax issue', () => {
+  describe('checks a file with travis syntax issues', () => {
     let editor = null;
     const badFile = path.join(__dirname, 'fixtures/travis_syntax', '.travis.yml');
     beforeEach(() => {
