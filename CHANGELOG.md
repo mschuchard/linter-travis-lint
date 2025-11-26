@@ -1,3 +1,8 @@
+### 1.0.5 (Next)
+- Improve package activation.
+
+tests failing now
+
 ### 1.0.4
 - Updates to Linter API usage.
 
